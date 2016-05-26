@@ -1,0 +1,25 @@
+mixin nav-content()
+  ul
+    li: a(href="about") About
+    li: a(href="youtube") YouTube
+    li: a(href="mentoring") Mentoring
+    li: a(href="articles") Articles
+    li: a(href="portfolio") Portfolio
+    li: a(href="design") Design
+    li: a(href="notes") Notes
+    li: a(href="contact") Contact
+
+.mobile-nav
+  +nav-content()
+  
+
+header
+  .header-position
+    h1.logo mxdsp
+    
+    nav.site-nav
+      +nav-content()
+    
+    a(href="mailto:mads.p@icloud.com").email-link +email me
+
+    .mobile-nav-toggle: span
