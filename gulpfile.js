@@ -19,6 +19,7 @@ gulp.task('jekyll-build', function (done) {
         .on('close', done);
 });
 
+
 /**
  * Rebuild Jekyll & do page reload
  */
@@ -53,6 +54,17 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('assets/css'));
 });
 
+
+gulp.task('js', function () {
+    return gulp.src('assets/js/*js')
+        // .pipe(browserify())
+        // .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('js-watch', ['js'], browserSync.reload);
+
+
 /**
 * Gulp jade
 **/
@@ -68,6 +80,7 @@ gulp.task('jade', function(){
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
+    gulp.watch('assets/js/**', ['js-watch']);
     gulp.watch('assets/css/**', ['sass']);
     gulp.watch(['*.html', '_layouts/*.html', '_includes/*'], ['jekyll-rebuild']);
     // gulp.watch(['assets/js/**'],['jekyll-rebuild']);
